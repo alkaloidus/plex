@@ -6,7 +6,7 @@ services:
         environment:
             - PUID=1000
             - PGID=1000
-            - VERSION=latest
+#            - VERSION=latest
             - TZ=$tzone
             - PLEX_CLAIM=$claim
 #            - ADVERTISE_IP="http://192.168.1.11:32400/"
