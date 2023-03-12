@@ -1,4 +1,4 @@
-version: '3'
+version: "3.9"
 services:
     plex:
         image: plexinc/pms-docker:latest
@@ -12,9 +12,29 @@ services:
 #            - ADVERTISE_IP="http://192.168.1.11:32400/"
         volumes:
             - ${app_data}/plex:/config
+            - ${app_data}/plex/transcode:/data/transcode
             - ${media}/moviez:/data/movies
             - ${media}/series:/data/tvshows
             - ${media}/music:/data/music
-            - ${app_data}/plex/transcode:/data/transcode
         network_mode: host
         restart: always
+
+    tautully:
+        image: tautulli/tautulli:latest
+        container_name: tautully
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=$tzone
+        volumes:
+            - ${app_data}/tautully:/config
+        ports:
+            - 8181:8181
+        restart: always
+        networks:
+            - private
+
+networks:
+    private:
+        external: true
+#            name: private
