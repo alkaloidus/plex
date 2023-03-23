@@ -6,11 +6,10 @@ services:
         environment:
             - PUID=1000
             - PGID=1000
-#            - VERSION=latest
             - TZ=$tzone
             - PLEX_CLAIM=$claim
-#            - ADVERTISE_IP="http://10.10.10.11:32400/"
-#            - ALLOWED_NETWORKS=10.10.10.0/24 # add your VPN network here too
+            - ADVERTISE_IP="http://10.10.10.11:32400/"
+            - ALLOWED_NETWORKS=10.10.10.0/24 # add your VPN network here too
         volumes:
             - ${app_data}/plex:/config
             - ${app_data}/plex/transcode:/data/transcode
